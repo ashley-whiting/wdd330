@@ -1,0 +1,150 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>WDD W02 Team</title>
+  <meta name="description" content="team activity week 2">
+
+  <script>
+    function writeDiv(){
+      document.getElementById('myDiv').innerHTML = 
+      document.getElementById('txtinput').value;
+
+    }
+
+    function addNum(n){
+        var n = document.getElementById('number');
+         var res = (n * (n+1)) /2;
+         return res;
+         document.getElementById('myDiv2').innerHTML = res.value;
+         
+    }
+
+  function add(x,y) {
+var x = document.getElementById("a").value;
+var y = document.getElementById("b").value;
+var sum = document.getElementById("sum");
+sum.value = (parseInt(x) + parseInt(y));
+}
+
+// Stretch 1 declaring a function
+
+function subtract(x,y) {
+var x = document.getElementById("num1").value;
+var y = document.getElementById("num2").value;
+var sum = document.getElementById("answer");
+sum.value = (parseInt(x) -  parseInt(y));
+}
+
+//Stretch 1 function expressions
+const multiply = function multiply(x,y){
+var x = document.getElementById("one").value;
+var y = document.getElementById("two").value;
+var sum = document.getElementById("answer2");
+sum.value = (parseInt(x) *  parseInt(y));
+
+}
+
+//Stretch 1 arrow functions
+const divide = (x,y) => {
+var x = document.getElementById("d1").value;
+var y = document.getElementById("d2").value;
+var sum = document.getElementById("d3");
+sum.value = (parseInt(x) /  parseInt(y));
+}
+
+//Stretch 3 Callbacks
+function calc(callback) {
+    var n1 = parseFloat(document.getElementById("number1").value);
+    var n2 = parseFloat(document.getElementById("number2").value);
+    var result = callback(n1, n2);
+    document.getElementById("result").value = result;
+}
+
+function multiplyNum(n1, n2) {
+    return n1 * n2;
+}
+function divideNum(n1, n2) {
+    return n1 / n2;
+}
+function addNum(n1, n2) {
+    return n1 + n2;
+}
+
+</script>
+</head>
+
+<body>
+    <form>
+        <label for="txtinput">Text Input:</label><br>
+        <input type="text" id="txtinput" name="txtinput"><br><br>
+        <input type="button" value="Submit" onclick="writeDiv()">
+      </form>
+      <br>
+
+      <div id="myDiv">
+
+      </div>
+
+      <div id="myDiv2">
+
+      </div>
+
+      <p>Input a number and the result will be the 
+          sum of all the numbers up to the number inputed</p>
+      <form>
+        <label for="number">Number Input:</label><br>
+        <input type="number" id="number" name="number"><br><br>
+        <input type="button" value="Submit" onclick="addNum()">
+      </form>
+      <br>
+
+      <p>Adding Machine</p>
+      <input type="text"id="a" name="number1">
+      <h3>+</h3>
+      <input type="text" id="b" name="number2"><br><br>
+      <input type="button" name="equals" value="Equals" onclick="add()"><br><br>
+      <input type="text" id="sum"name="answer"> 
+
+      <h1>Stretch Challenges</h1>
+ <h2>3 Functions</h2>
+ <p>Subtract</p>
+ <input type="text"id="num1" name="number1">
+ <h3>-</h3>
+ <input type="text" id="num2" name="number2"><br><br>
+ <input type="button" name="equals" value="Equals" onclick="subtract()"><br><br>
+ <input type="text" id="answer"name="answer"> 
+
+<br>
+<br>
+<p>Multiply</p>
+<input type="text"id="one" name="number1">
+ <h3>*</h3>
+ <input type="text" id="two" name="number2"><br><br>
+ <input type="button" name="equals" value="Equals" onclick="multiply()"><br><br>
+ <input type="text" id="answer2" name="answer"> 
+
+ <br>
+<br>
+<p>Divide</p>
+<input type="text"id="d1" name="number1">
+ <h3>*</h3>
+ <input type="text" id="d2" name="number2"><br><br>
+ <input type="button" name="equals" value="Equals" onclick="divide()"><br><br>
+ <input type="text" id="d3" name="answer"> 
+<br>
+
+<p>Callback</p>
+Number 1: <input id="number1" type="number"/><br /><br />
+Number 2: <input id="number2" type="number"/><br /><br />
+<input type="button" onclick="calc(addNum)" value="Add" id="add" />
+<input type="button" value="Multiply" onclick="calc(multiplyNum)" id="multiply" />
+<input type="button" value="Divide" id="divide" onclick="calc(divideNum)" />
+<br /><br />
+Result: <input id="result" type="number"/><br />
+
+</body>
+</html>

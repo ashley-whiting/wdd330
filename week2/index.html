@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+  <title>WDD 330 Portfolio</title>
+ 
+  <style>
+      body{
+          background-color:#e6f3f8;
+          font-family: Arial, Helvetica, sans-serif;
+      }
+      h3{
+          text-decoration: underline;
+      }
+      #highlight{
+          background-color: rgb(241, 241, 166)
+      }
+      #remember{
+          background-color: lightskyblue;
+      }
+      #code{
+          font-family: 'Courier New', Courier, monospace;
+      }
+  </style>
+
+</head>
+
+<body>
+  <h1>WDD 330 Portfolio</h1>
+<h2>Week02</h2>
+<h3>Chapter 2 Programming Basics Notes:</h3>
+<p><i>From the book:</i></p>
+<p>If the variable references a non-primitive data type, such as an array, function or object, then using const will not make itimmutable. 
+This means the underlying data inside the objectcanchange (known asmutatingthe object). We can see this in the example below:
+const name = { value: 'Alexa' }; // an object
+name.value = 'Siri'; // change the value
+>> 'Siri'
+Don't worry if you don't quite follow the notation used in this example. We'll cover it in Chapter 5. The important thing to note is that the 
+value property of the object referenced by the variable name was changed from 'Alexa' to 'Siri'.</p>
+<p id="highlight">
+    QUESTION- I thought the only way of changing an array const was to add to it. How can you change the content of a const array?
+</p>
+
+<p id="highlight">
+    QUESTION- ParseInt(‘100’,2)’ what is the second argument?</p>
+
+<p id="remember">TO REMEMBER:
+</p>    
+<p><em>Number Methods:</em><br></p>
+<ul>
+    <li><em>toFixed():</em> rounds a number to a fixed number of decimal places</li>
+    <li><em>toPrecision():</em> rounds a number to a fixed number of significant figures that is once again returned as a string.</li>
+    
+</ul>
+
+<h3>Chapter 3 Arrays, Logic & Loops Notes:</h3>
+<p id="remember">TO REMEMBER:</p>   
+<ul>
+    <li><em>Array.pop()</em> will remove the last item</li>
+    <li><em>Array.shift()</em> will remove the first item</li>
+    <li><em>Array.push()</em> appends a new value to the end</li>
+    <li><em>Array.pop()</em> appends a new item to the beginning</li>
+</ul>
+<p id="highlight">
+    QUESTION- ParseInt(‘100’,2)’ what is the second argument?</p>
+    
+<p>Code Pen for Map Avengers Quiz: <a href="https://codepen.io/ashley-whiting/pen/xxraEeJ" target="_blank">Ashley's Avenger's CodePen</a></p>
+
+<h3>Chapter 4 Functions Notes:</h3>
+<p>Functions that are defined using a function declaration are automatically hoisted, meaning they can be invoked before they have been defined.</p>
+<p id="highlight">
+    QUESTION- How often is Hoisting used/when would it be useful? I’m thinking it would be more logical and easier to follow code that is written 
+    ‘in order’ i.e. defining a function and then invoking it.  </p>
+
+<p><em>Callbacks:</em> a function that is passed as na argument to another function</p>  
+<ul>
+    <li>Good example:</li>
+</ul>  
+ <p id="code">Function sing(song){<br>
+    Console.log(‘I’m singing along to ${song})’<br>
+sing(‘Let It Go’)’<br>
+>>’I’m singing along to Let It Go’<br>
+Function dance(){<br>
+    Console.log(“I’m dancing to the song”);<br>
+ Sing(‘Let It Go’, dance);<br>
+>>’I’m singing along to Let It Go.’, ‘I’m dancing to the song’
+</p>
+
+
+
+
+
+
+
+</body>
+</html>
