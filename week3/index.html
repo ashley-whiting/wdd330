@@ -49,7 +49,7 @@
 
 </ol>
 <h3>Chapter 5: Objects</h3>
-<p><b>Creating Objects</em></p>
+<p><b>Creating Objects</b></p>
 <p>I like how js allows objects to be created quickly without having to define a class. It’s a great way to organize all of the object’s properties.
     I also prefer the ES6 method of creating objects if a property key is the same as a variable name that the property value is assigned to. Example from the book:</p>
    <p id="code"> const name = 'Iron Man';<br>
@@ -60,11 +60,11 @@
     const ironMan = { name, realName };
     </p>
     
-    <p><em>Accessing Properties</em></p>  
+    <p><b>Accessing Properties</b></p>  
     <p>I prefer t use dot notation when accessing an object’s property.  Working off the superman example from the book, I’d rather use superman.name than using the brackets, unless I want to use multiple properties to create a string or something:</p>
 
         <p id="code">Superman[“real” + “” + “name”]</p>
-        <p><em>Calling Methods</em></p>  
+        <p><b>Calling Methods</b></p>  
         <p>We can also call an object’s method with my preferred dot notation. Object.functionName()
         Objects also make it easy to check if a property or method exists. A few different ways are:
         </p> 
@@ -80,7 +80,7 @@
             << true
             </p>
 
-    <p><em>Looping through, Adding, CHanging, and Deleting Properties</em></p>  
+    <p><b>Looping through, Adding, CHanging, and Deleting Properties</b></p>  
     <p>Using a simple for in loop will ‘loop’ or iterate through all of your object’s properties:</p>
     <p id="code">for(const key in superman) {
         console.log(key + ": " + superman[key]);
@@ -109,7 +109,7 @@ To change a property, just change it to what you want it to be:</p>
 <p id="code">delete superman.fly
 << true</p>
 
-<p><em>Nested Objects</em></p>
+<p><b>Nested Objects</b></p>
 <p>You can create as many objects within one object as you want (but it might get tedious if you make too many). </p>
 <p id="code">const jla = {<br>
     superman: { realName: 'Clark Kent' },<br>
@@ -119,9 +119,9 @@ To change a property, just change it to what you want it to be:</p>
     aquaman: { realName: 'Arthur Curry' },
 }</p>
 
-<p><em>Built In Objects</em></p>
+<p><b>Built In Objects</b></p>
 <p>I love built in objects like Math because it makes it so easy to use their properties without having to write your own functions. I like to use Math as an example because it’s a great visual. Let’s take a few of it’s properties as examples:</p>
-<p id="color"><em>-Rounding methods:<em></em><br>
+<p id="color"><b>-Rounding methods:<b></b><br>
 Math.ceil will round a number UP to the next integer:<br>
 Math.ceil(4.2);
 << 5<br>
@@ -152,7 +152,7 @@ Math.trunc(-4.2);
 << -4</p>
 
 
-<p><em>Getter vs Setter Methods</em></p>
+<p><b>Getter vs Setter Methods</b></p>
 <p>I’ve always been confused as to what these were and how to use them correctly. <br>
 I liked the book’s example of using the Date objects to explain this. This getter methods will return information about the date object such as the day, date(19th) and month: </p>
 <p id="code">diwali.getDay(); // it's on a Thursday
@@ -184,7 +184,7 @@ I liked the book’s example of using the Date objects to explain this. This get
  
  <h3>Chapter 6: Document Object Model</h3>
  <p>DOM represents an HTML document as a network of connected noes. The Html tag is the root node, and every other part of the document is a child node. </p>
-<p><em>WHY?</em>WHY? DOM allows us to access elements from an HTML doc to use it in our javascript code. For example we can create a variable called ‘body’ and assign it the value of everything inside the html body tag like this:</p>
+<p><b>WHY?</b>WHY? DOM allows us to access elements from an HTML doc to use it in our javascript code. For example we can create a variable called ‘body’ and assign it the value of everything inside the html body tag like this:</p>
 <p id="code">Const body = document.body;</p>
 
 <p id="remember">TO REMEMBER:</p>  
@@ -197,7 +197,7 @@ I liked the book’s example of using the Date objects to explain this. This get
         <li>•	 Document.forms returns a node list of all the forms in the document. </li>
 </ul>
 
-<p><em>Getting Elements</em></p> 
+<p><b>Getting Elements</b></p> 
 <p>DOM makes it easy to get elements. You can get elements by their:</p>
 <ul>
     <li>-ID document.getElementByID(‘title’);</li>
@@ -209,7 +209,7 @@ I liked the book’s example of using the Date objects to explain this. This get
         </li>
 </ul>
 
-<p><em>Adding, Deleting and Replacing Elements</em></p> 
+<p><b>Adding, Deleting and Replacing Elements</b></p> 
 <ul>
     <li>-Heroes.appendChild(wonderWoman); <br>
         will append wonderWoman at the end of an unordered list. <br>
