@@ -1,0 +1,243 @@
+<!doctype html>
+<html>
+<head>
+  <title>WDD 330 Portfolio</title>
+ 
+  <style>
+      body{
+          background-color:#e6f3f8;
+          font-family: Arial, Helvetica, sans-serif;
+      }
+      h3{
+          text-decoration: underline;
+      }
+      #highlight{
+          background-color: rgb(241, 241, 166)
+      }
+      #remember{
+          background-color: lightskyblue;
+      }
+      #code{
+          font-family: 'Courier New', Courier, monospace;
+      }
+      #color{
+          background-color: #FF7F7F;
+      }
+  </style>
+
+</head>
+
+<body>
+  <h1>WDD 330 Portfolio</h1>
+<h2>Week03</h2>
+<h3>So, what is THIS?</h3>
+<ol>
+<li>In Global context: Will call the default Window object in the browser, so it won’t help ya</li>
+<li>In Object Construction: when creating a new instance of an object, this refers to the instance. This is a keyword, not a variable.</li>
+<li>In an Object Method: this refers to the object within a method. When working with multiple objects within a method, this allows you to get the correct instance. 
+
+</li>
+<li>In a simple Function: I don’t use this in simple functions because it doesn’t make sense to have to take one step further to create a variable to hold the reference to this. I’d rather use an arrow function. </li>
+<li>In an Arrow Function: this keeps the context of the object (in its immediate scope).</li>
+<li>In Event Listeners: this is set to the element that fired or ‘started’ the event in the listener. </li>
+
+<p id="remember">TO REMEMBER:</p> 
+<ul>
+    <li>You need to use bind to reference the object in an event listener</li>
+    <li>Bind will create a new function hat will force the this inside the function to be the parameter passed to bind(). *** bind doesn’t work with arrow functions. </li>
+</ul>
+
+</ol>
+<h3>Chapter 5: Objects</h3>
+<p><em>Creating Objects</em></p>
+<p>I like how js allows objects to be created quickly without having to define a class. It’s a great way to organize all of the object’s properties.
+    I also prefer the ES6 method of creating objects if a property key is the same as a variable name that the property value is assigned to. Example from the book:</p>
+   <p id="code"> const name = 'Iron Man';<br>
+    const realName = 'Tony Stark';<br>
+    // long way<br>
+    const ironMan = { name: name, realName: realName };<br>
+    // short ES6 way<br>
+    const ironMan = { name, realName };
+    </p>
+    
+    <p><em>Accessing Properties</em></p>  
+    <p>I prefer t use dot notation when accessing an object’s property.  Working off the superman example from the book, I’d rather use superman.name than using the brackets, unless I want to use multiple properties to create a string or something:</p>
+
+        <p id="code">Superman[“real” + “” + “name”]</p>
+        <p><em>Calling Methods</em></p>  
+        <p>We can also call an object’s method with my preferred dot notation. Object.functionName()
+        Objects also make it easy to check if a property or method exists. A few different ways are:
+        </p> 
+        <p id="code">'city' in superman;
+            << false<br>
+            
+            superman.city !== undefined;
+            << false<br>
+            
+            superman.hasOwnProperty('city');
+            << false<br>
+            superman.hasOwnProperty('name');
+            << true
+            </p>
+
+    <p><em>Looping through, Adding, CHanging, and Deleting Properties</em></p>  
+    <p>Using a simple for in loop will ‘loop’ or iterate through all of your object’s properties:</p>
+    <p id="code">for(const key in superman) {
+        console.log(key + ": " + superman[key]);
+    }<br>
+    << "name: Superman"<br>
+    << "real name: Clark Kent"<br>
+    << "height: 75"<br>
+    << "weight: 235"<br>
+    << "hero: true"<br>
+    << "villain: false"<br>
+    << "allies: Batman,Supergirl,Superboy"<br>
+    << "fly: function (){<br>
+        console.log(\"Up, up and away!\");
+    }"
+    </p>
+
+<p>To add a property, simply use dot notation to add the new property to your object:</p>
+<p id="code">superman.city = 'Metropolis';
+<< 'Metropolis'</p>
+
+<p>Now your superman object has a new property, city with the value ‘Metropolis’.
+To change a property, just change it to what you want it to be:</p>
+<p id="code">superman['real name'] = 'Kal-El';<br>
+<< 'Kal-El'</p>
+<p>And a simple delete command will delete a property:</p>
+<p id="code">delete superman.fly
+<< true</p>
+
+<p><em>Nested Objects</em></p>
+<p>You can create as many objects within one object as you want (but it might get tedious if you make too many). </p>
+<p id="code">const jla = {<br>
+    superman: { realName: 'Clark Kent' },<br>
+    batman: { realName: 'Bruce Wayne' },<br>
+    wonderWoman: { realName: 'Diana Prince" },<br>
+    flash: { realName: 'Barry Allen' },<br>
+    aquaman: { realName: 'Arthur Curry' },
+}</p>
+
+<p><em>Built In Objects</em></p>
+<p>I love built in objects like Math because it makes it so easy to use their properties without having to write your own functions. I like to use Math as an example because it’s a great visual. Let’s take a few of it’s properties as examples:</p>
+<p id="color"><em>-Rounding methods:<em></em><br>
+Math.ceil will round a number UP to the next integer:<br>
+Math.ceil(4.2);
+<< 5<br>
+Math.ceil(8);
+<< 8<br>
+Math.ceil(-4.2);
+<< -4<br>
+ Math.floor() will round a number DOWN to the next integer:<br>
+Math.floor(4.2);
+<< 4<br>
+Math.floor(8);
+<< 8<br>
+Math.floor(-4.2);
+<< -5<br>
+
+Math.round() method will round a number to the NEAREST integer:<br>
+Math.round(4.5);
+<< 5<br>
+Math.round(4.499);
+<< 4<br>
+Math.round(-4.2);
+<< -4<br>
+
+And Math.trunc() will truncate the number at the decimal point:<br>
+Math.trunc(4.9);
+<< 4<br>
+Math.trunc(-4.2);
+<< -4</p>
+
+
+<p><em>Getter vs Setter Methods</em></p>
+<p>I’ve always been confused as to what these were and how to use them correctly. <br>
+I liked the book’s example of using the Date objects to explain this. This getter methods will return information about the date object such as the day, date(19th) and month: </p>
+<p id="code">diwali.getDay(); // it's on a Thursday
+    << 4<br>
+    diwali.getDate(); // it's on the 19th
+    << 19<br>
+    diwali.getMonth(); // it's in October
+    << 9
+    </p>
+
+    <p id="remember">TO REMEMBER:</p> 
+    <p>So getter methods return the variable VALUE.</p>
+
+    
+<p id="remember">TO REMEMBER:</p>  
+<p>So setter methods SETS the variable’s value/sets a new value.</p>
+<p>Now we can SET the date of our Diwali object to a specific date with setter functions:</p>
+    <p>Now we can SET the date of our Diwali object to a specific date with setter functions:</p>
+    <p id="code">diwali.setDate(7);
+        << 1507330800000<br>
+        diwali.setMonth(10); // November is month 10
+        << 1510012800000<br>
+        diwali.setFullYear(2018);
+        << 1541548800000
+        </p>
+
+ <h4>Updated quiz game, organized with the functions inside newly created objects. </h4>   
+ <p>CodePen: <a href="https://codepen.io/ashley-whiting/pen/VwWRVjB">https://codepen.io/ashley-whiting/pen/VwWRVjB</a></p>  
+ 
+ <h3>Chapter 6: Document Object Model</h3>
+ <p>DOM represents an HTML document as a network of connected noes. The Html tag is the root node, and every other part of the document is a child node. </p>
+<p><em>WHY?</em>WHY? DOM allows us to access elements from an HTML doc to use it in our javascript code. For example we can create a variable called ‘body’ and assign it the value of everything inside the html body tag like this:</p>
+<p id="code">Const body = document.body;</p>
+
+<p id="remember">TO REMEMBER:</p>  
+<p>DOM Shortcut Methods: </p>
+<ul>
+    <li>•	 Document.body returns the body element of a web page, as we saw in the previous example.</li>
+    <li>•	 Document.images returns a node list of all the images contained in the document.</li>
+    <li>•	 Document.links returns a node list of all the <a> elements and <area> elements that have an href attribute.</li>
+    <li>•	 Document.anchors returns a node list of all the <a> elements that have a name attribute.</li>
+        <li>•	 Document.forms returns a node list of all the forms in the document. </li>
+</ul>
+
+<p><em>Getting Elements</em></p> 
+<p>DOM makes it easy to get elements. You can get elements by their:</p>
+<ul>
+    <li>-ID document.getElementByID(‘title’);</li>
+    <li>-Tag Name document.getElementsByTagName(‘li’);</li>
+    <li>-Class Name document.getelementsByClassName(‘hero’);</li>
+    <li>-Using document.querySelector() allows us to use CSS to find the FIRST element in the document that matches a selector proved as an argument. <br>
+        Example, this will select the first element that has the id ‘bats’:<br>
+        Document.querySelector(‘#bats’);
+        </li>
+</ul>
+
+<p><em>Adding, Deleting and Replacing Elements</em></p> 
+<ul>
+    <li>-Heroes.appendChild(wonderWoman); <br>
+        will append wonderWoman at the end of an unordered list. <br>
+        If you want the new element to be in between two existing elements, use insertBefore();</li>
+        <li>-heroes.removechild(aquaman) will remove the aquaman element from the list</li>
+        <li>-h1.replaceChild(newText, oldText); will replace the object ‘h1’ created with newText</li>
+</ul>
+
+<h4>New Quiz Ninja project, updated with new markup on the page:</h4>
+<p><a href="https://codepen.io/ashley-whiting/pen/ZEyPmvy">https://codepen.io/ashley-whiting/pen/ZEyPmvy</a></p>
+
+<h3>Chapter 7: Events</h3>
+<p>Event listeners adds an event handlers to a DOM element to let you know when something happens.<br>
+    For example: document.body.addEventListener(“click”, doSomething); doSomething() <br>
+    is the function that holds the ‘action’ of what happens when the user ‘clicks’.</p>
+    <p>My preferred way is to use the ‘older event handlers’ by assigning a DOM element (like an id) a function that will be invoked when the event occurs. For example:</p>
+    <p id="code">Document.onclick  = function() {console.log(‘You clicked!’);</p>
+    
+        <h4>Example worked through with the reading:</h4>
+        <p>(Won't work withouot uncommenting/commenting out code per the steps/instructions</p>
+        <p><a href="https://github.com/ashley-whiting/wdd330/tree/main/week3/Events%20Example">https://github.com/ashley-whiting/wdd330/tree/main/week3/Events%20Example</a></p>
+
+
+
+
+
+
+
+
+</body>
+</html>
