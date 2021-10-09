@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+  <title>WDD 330 Portfolio</title>
+ 
+  <style>
+      body{
+          background-color:#e6f3f8;
+          font-family: Arial, Helvetica, sans-serif;
+      }
+      h3{
+          text-decoration: underline;
+      }
+      #highlight{
+          background-color: rgb(241, 241, 166)
+      }
+      #remember{
+          background-color: lightskyblue;
+      }
+      #code{
+          font-family: 'Courier New', Courier, monospace;
+      }
+      #color{
+          background-color: #FF7F7F;
+      }
+  </style>
+
+</head>
+
+<body>
+  <h1>WDD 330 Portfolio</h1>
+<h2>Week04</h2>
+<h3>Chapter 8 Forms</h3>
+<p><b>Accessing Form Elements</b></p>
+<ul>
+    <li>-Index notation will return the first and only form object:<br>
+        <p id="code">const form = document.forms[0];</p>
+        </li>
+        <li>-Using the name attribute to identify a form:<br>
+        <p id="code">Const form = document.forms.search;</p></li>
+        <li>-elements Method returns an HTML collection of all the elements contained in the form:<br>
+        <p id="code">Const [input,button] = form.elements;</p></li>
+        <li>-‘Name’ attributes:<br>
+        <p id="code">Const input = form.searchInput</p></li>
+</ul>
+
+<p><b>Form Events</b></p>
+<ul>
+    <li>-focus event occurs when an element is focused on</li>
+    <li>-blur event occurs when the user moves the focus away from the form element</li>
+    <li>-change event occurs when the user moves the focus away from the form element after changing it.</li>
+</ul>
+<p><b>Form Controls</b></p>
+<ul>
+    <li>-input fields include text, passwords, check boxes, radio buttons, file uploads</li>
+    <li>-select menus for drop-down lists of options</li>
+    <li>-textarea for longer text entry</li>
+    <li>-button elements for submitting and resetting forms </li>
+</ul>
+
+<p><b>Form Validation </b></p>
+<ul>
+    <li>-required attribute to the field name in form ensures a field is completed. </li>
+    <li>-validating an email input field can ensure the email address is valid</li>
+    <li>-Can ensure a number is entered when numerical data is required</li>
+    <li>-A password meets the stated requirements </li>
+</ul>
+
+<p><b>Disabling the Submit Button</b></p>
+<p>--The ability to disable the submit button if there are errors on the form.</p>
+<p>The following function will disable the button if an input field is empty:</p>
+<p id="code">function disableSubmit(event)<br>
+     {    if(event.target.value === ''){  <br>
+              document.getElementById('submit').disabled = true;    }<br>
+               else {        document.getElementById('submit').disabled = false;    }}</p>
+<p> Then apply an event Listener to the filed name:</p>
+<p id="code">form.heroName.addEventListener('keyup',disableSubmit,false)</p>
+
+<h3>Chapter 12 Object Oriented Programming</h3>
+<p><b>Constructor Functions:</b> a function that defines the properties and methods of an object. </p>
+<p>--Built-in Constructor Functions:</p>
+<ul>
+<li>-Object (creates new object)</li>
+<li>Array (creates a new array)</li>
+<li>Function (creates new function)</li>
+</ul>
+
+<p><b>Static methods:</b> Sometimes called class methods in other languages, a static method is called by the class directly rather than by instances of the class.</p>
+
+<p><b>Prototypal Inheritance:</b> Every class has a prototype property that is shared by every instance of the class. So any properties or methods of a class’s prototype<br>
+     can be accessed by every object instantiated by that class.  Example: Here is a class for creating ninja turtles:</p>
+     <p id="code">class Turtle {    constructor(name) <br>
+        {        this.name = name;        this.weapon = 'hands';    } <br>
+           sayHi() {        return `Hi dude, my name is ${this.name}`;    }   <br>
+            attack(){        return `Feel the power of my ${this.weapon}!`;    }}</p>
+
+<p>This can be used to create a new turtle instance:</p>            
+<p id="code">const leo = new Turtle('Leonardo');<< Turtle { name: 'Leonardo' }</p>
+
+<p>‘leo’ points to an instance of the Turtle class:</p>
+<p id="code">leo.name;<< 'Leonardo'<br>
+    leo.sayHi();<< 'Hi dude, my name is Leonardo'
+    </p>
+
+    <p><b>Public and Private Methods</b></p>
+    <p>Using variable scope can make a make properties and functions private or public. (Global variables will be public) </p>
+
+    <p><b>The Prototype Chain</b></p>
+    <p>We can look further down the prototype chain by calling the Object.getPrototypeOf() method recursively.  Example:</p>
+    <p id="code">Object.getPrototypeOf(Object.getPrototypeOf(raph))<< {}</p>
+
+    <p id="highlight">Question: How do you know how far you can go? Is there a way to see how many ‘level’s of prototypes there is? </p>
+
+    <p><b>Mixins </b></p>
+    <p>A mixin is a way of adding properties and methods of some objects to another object without using inheritance. <br>
+        It allows more complex objects to be created by ‘mixin’ basic objects together. Example:</p>
+        <p id ="code">const a = {};<br>
+            const b = { name: 'JavaScript' };<br>
+            Object.assign(a,b);<< { name: 'JavaScript' }<br>
+            a.name<< 'JavaScript'
+            </p>
+
+    <p>***This will only make a shallow copy. To avoid this, create a new mixin() function that will assign all properties of both objects known as a deep copy. </p> 
+    <p id="code">function mixin(target,...objects) { <br>
+           for (const object of objects) {     <br>
+              if(typeof object === 'object') {   <br>
+                     for (const key of Object.keys(object)) {    <br>
+                                if (typeof object[key] === 'object') { <br>
+                                               target[key] = Array.isArray(object[key]) ? [] : {};  <br>
+                                                         mixin(target[key],object[key]);         <br>
+                                                           } else {            Object.assign(target,object); <br>
+                                                                     }        }        }    }    return target;}</p
+ <p id="highlight">return target;}
+    Question: What is the purpose of the mixin copy() function? Isn’t the mixin() function essentially creating a copy? 
+    </p>
+
+    <p><b>Composition Over Inheritance </b></p>
+    <p>One problem Inheritance creates:</p>
+    <p><em>You wanted a banana but what you got was a gorilla holding the banana and the entire jungle.</em></p>
+    <p> Composition allows us to just ‘borrow’ the banana from the Gorilla:</p>
+    <p id="code">banana = Gorilla.prototype.banana;</p>
+    <p>Updated Quiz Ninja Project, using OOP to provide options to answer instead of making the player input text:<br>
+        <a href="https://codepen.io/ashley-whiting/pen/gOxOLLN"> https://codepen.io/ashley-whiting/pen/gOxOLLN</a></p>
