@@ -28,9 +28,117 @@
 </head>
 
 <body>
-  <h1>WDD 330 Portfolio</h1>
-<h2>Week05</h2>
-<h3>Chapter 8 Forms</h3>
+  <h1>WDD 330 Portfolio | Week05</h1>
+
+<h2>Chapter 10 Testing and Debugging</h2>
+
+
+<p><b>Errors</b></p>
+<ul>
+    <li><b>System error:</b> a problem with the system or external devices with which the program is interacting.</li>
+    <li><b>Programmer error:</b> the program contains incorrect syntax or faulty logic; it could even be as simple as a typo..</li>
+    <li><b>User error:</b> the user has entered data incorrectly, which the program is unable to handle..</li>
+</ul>
+
+<p><b>Exceptions</b></p>
+<p>An error that produces a return value that can be used by the program to deal with the error. <br>
+    For example, trying to call a method that is nonexistent will result in a reference error that raises an exception.</p>
+<p id="highlight">Question: So would referencing a misspelled function be a programmer error or an exception?</p>
+
+<p><b>Stack Traces</b></p>
+<p>A sequence of functions or method calls that lead to the point where the error occurred. </p>
+
+<p><b>Warnings</b></p>
+<p>A warning can occur if there’s an error in the code that isn’t enough o cause the program to crash. <br>
+    The program will continue to run, but the problem is that it can continue to run incorrectly. </p>
+
+<h3>Strict Mode</h3>    
+<p>Strict mode produces more exceptions and warnings and prohibits the use of some deprecated features. This is due to the fact that strict mode considers coding practices that were previously accepted as just<br>
+     being 'poor style' as actual errors.<br>
+    Increasing the chance of errors might seem like a bad idea at first, but it’s much better to spot errors early on, rather than have them cause problems later. Writing code in strict mode can also help improve<br>
+    its clarity and speed, since it follows conventions and will throw exceptions if any sloppy code practices are used.<br>
+    Placing'use strict'at the beginning of a file will enforce strict mode on all the JavaScript in the file. And if you’re using anybody else’s code, there’s no guarantee they’ve coded in strict mode. <br>
+    This technique will ensure that only your code is forced to use strict mode.
+    </p>
+ 
+<p><b>Linting Tools</b></p>
+<p>Linting tools such asJS Lint,JS Hint,andES Lintcan be used to test the quality of JavaScript code, beyond simply using strict mode. <br>
+    They are designed to highlight any sloppy programming practices or syntax errors, and will complain if certain style conventions are not followed,<br>
+     such as how code is indented.<br>
+    It's possible to add a linting tool as a text-editor plugin; this will then highlight any sloppy code as you type. Another option is to use an online<br>
+     linting tool that allows you to simply paste onto a page for feedback. Another option is to install linting software on your computer using npm. <br>
+     This can then be run as part of your workflow.
+    </p>
+
+<p><b>Feature Detection</b></p>
+<p>The recommended way to determine browser support for a feature is to use feature detection. This is done using anifstatement to check whether<br>
+     an object or method exists before trying to actually call the method.<br>
+    This ensures that no error occurs if the browser doesn’t support the method, because referencing a nonexistent object will return undefined. <br>
+    The ‘old-school’ way of checking for browser support was ‘browser sniffing’ .(the use the string returned by -window.navigator.userAgent-
+    </p>
+
+    <h3>Debugging the Browser</h3>
+    <p>Debugging is the process of finding out where bugs occur in the code and then dealing with them. There are a number of options for debugging JS in the browser:</p>
+    <p><b>The Trusty Alert</b></p>
+    <p>The most basic form of debugging is to use thealert()method to show a dialog at certain points in the code. Becausealert()stops a program from running until OK is clicked, <br>
+        it allows us to effectively put breakpoints in the code that let us check the value of variables at that point to see if they’re what we expect them to be.</p>
+
+    <p><b>Using the Console</b></p>
+    <p>The -console- object provides a number of methods for logging information and debugging. </p>
+    <ul>
+        <li><b>console.log()</b> will log the value of variables at different stages of the program, but will not stop the execution</li>
+        <li><b>console.trace()</b> will log an interactive stack trace in the console. This will show the functions that were called in the lead<br>
+             up to an exception occurring while the code is running. </li>
+    </ul>
+
+    <h3>Error Objects</h3>
+    <p>Anerrorobject can be created by the host environment when an exception occurs, or it can be created in the code using a constructor function, like so:</p>
+    <p id="code">const error = new Error();</p>
+
+    <p>This constructor function takes a parameter that’s used as the error message:</p>
+<p id="code>">const error = new Error('Oops, something went wrong');</p>
+
+<p>More error objects for specific errors:</p>
+<ul>
+    <li><b>RangeError:</b> trown when a number is outside an allowable range of values</li>
+    <li><b>ReferenceError:</b> when a reference is made to an item that doesn’t exist</li>
+    <li><b>SyntaxError:</b> when there’s an error in the code’s syntax</li>
+    <li><b>TypeError:</b> when there’s an error in the type of value used.</li>
+    <li><b>URIError:</b> when there’s a problem encoding or decoding the URI</li>
+    <li><b>InternalError:</b> a non-standard error that is thrown when an error occurs in the JavaScript engine.<br>
+         (common cause is too much recursion)</li>
+
+</ul>
+
+<p><b>Throwing Exceptions</b></p>
+<p>You can also throw your own exceptions using the -throw- statement. A good example of this would be when<br>
+    trying to find the sq root of a number. Example: </p>
+    <p id="code">function squareRoot(number) { <br>
+           'use strict'; <br>
+              if (number < 0) { <br>
+                       throw new RangeError('You can't find the square root of negative numbers')    }  <br>
+                         return Math.sqrt(number);};</p>
+        
+<p>The technical answer is an imaginary number, but these are not supported in JS, so you want to tell the user <br>
+    that they cannot use a negative number in your program.</p>
+
+    <h3>Exception Handling </h3>
+    <p>I agree with the reading that the best way to handle exceptions is by using the try catch and finally blocks.<br>
+        These basically go in order, try THIS, catch the error if there is one, and if you want to add a finally, block, this <br>
+        will execute regardless of whether an exception occurred or not. 
+        </p>
+        <p>Example:</p>
+<p id="code">function imaginarySquareRoot(number) { <br>
+       'use strict';    let answer;    try {  <br>
+              answer = String(squareRoot(number));    } <br>
+              catch(error) {        answer = squareRoot(-number)+"i";    } <br>
+              finally {        return `+ or - ${answer}`;    }}</p>
+
+<p><b>Jest Framework</b></p>  
+<p>Jest can reliably run tests in parallel to your code. Jest runs previously failed tests first and reorganizes runs based on how long test files take.
+   <br>
+    More Jest info: <a href="https://jestjs.io/">https://jestjs.io/</a>"
+    </p>            
 
 </body>
 </html>
