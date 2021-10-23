@@ -1,117 +1,150 @@
-// This is the array that will hold the todo list items
-let todoItems = [];
-localStorage.setItem('todoItemsRef', JSON.stringify(todoItems));
+document.addEventListener("DOMContentLoaded", main);
 
-//append new li element for each item 
-function renderTodo(todo) {
-    const list = document.querySelector('.js-todo-list');
-    const item = document.querySelector(`[data-key='${todo.id}']`);
-  
-    if (todo.deleted) {
-        item.remove();
-       
-        if (todoItems.length === 0) list.innerHTML = '';
-        return
-      }
-    const isChecked = todo.checked ? 'done': '';
-    const node = document.createElement("li");
-    node.setAttribute('class', `todo-item ${isChecked}`);
-    node.setAttribute('data-key', todo.id);
-    node.innerHTML = `
-      <input id="${todo.id}" type="checkbox"/>
-      <label for="${todo.id}" class="tick js-tick"></label>
-      <span>${todo.text}</span>
-      <button class="delete-todo js-delete-todo">
-      <svg><use href="#delete-icon"></use></svg>
-      </button>
-    `;
-  
+function main() {
+ addTodo();
+  // user input
+  const add = document.getElementById("add-btn");
+  const txtInput = document.querySelector(".txt-input");
+  add.addEventListener("click", function () {
+    const item = txtInput.value.trim();
     if (item) {
-      list.replaceChild(node, item);
-    } else {
-      list.append(node);
+      txtInput.value = "";
+      const todos = !localStorage.getItem("todos") ? [] : JSON.parse(localStorage.getItem("todos"));
+      const currentTodo = { item, isCompleted: false, };
+      addTodo([currentTodo]);
+      //push new todos to array
+      todos.push(currentTodo);
+      localStorage.setItem("todos", JSON.stringify(todos));
     }
-  }
-
-// This function will create a new todo object based on the
-// text that was entered in the text input, and push it into
-// the `todoItems` array
-function addTodo(text) {
-  const todo = {
-    text,
-    checked: false,
-    id: Date.now(),
-  };
-
-  todoItems.push(todo);
- renderTodo(todo);
-}
-//receives the key of the lsit item hat was checked and finds the corresponding
-//entry in the todoItems array using the findIndex method
-function toggleDone(key) {
-    // findIndex is an array method that returns the position of an element in the array.
-    const index = todoItems.findIndex(item => item.id === Number(key));
-    // Locate the todo item in the todoItems array and set its checked
-    // property to the opposite. That means, `true` will become `false` and vice
-    // versa.
-    todoItems[index].checked = !todoItems[index].checked;
-    renderTodo(todoItems[index]);
-  }
-
-  function deleteTodo(key) {
-    // find the corresponding todo object in the todoItems array
-    const index = todoItems.findIndex(item => item.id === Number(key));
-    // Create a new object with properties of the current todo item
-    // and a `deleted` property which is set to true
-    const todo = {
-      deleted: true,
-      ...todoItems[index]
-    };
-    // remove the todo item from the array by filtering it out
-    todoItems = todoItems.filter(item => item.id !== Number(key));
-    renderTodo(todo);
-  }
-
-// Select the form element
-const form = document.querySelector('.js-form');
-// Add a submit event listener
-form.addEventListener('submit', event => {
-  // prevent page refresh on form submission
-  event.preventDefault();
-  // select the text input
-  const input = document.querySelector('.js-todo-input');
-
-  // Get the value of the input and remove whitespace
-  const text = input.value.trim();
-  if (text !== '') {
-    addTodo(text);
-    input.value = '';
-    input.focus();
-  }
-});
-
-//detect the item aht is being CHECKED OFF:
-// Select the entire list
-const list = document.querySelector('.js-todo-list');
-list.addEventListener('click', event => {
-  if (event.target.classList.contains('js-tick')) {
-    const itemKey = event.target.parentElement.dataset.key;
-    toggleDone(itemKey);
-  }
-
-  if (event.target.classList.contains('js-delete-todo')) {
-    const itemKey = event.target.parentElement.dataset.key;
-    deleteTodo(itemKey);
-  }
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const ref = localStorage.getItem('todoItemsRef');
-    if (ref) {
-      todoItems = JSON.parse(ref);
-      todoItems.forEach(t => {
-        renderTodo(t);
-      });
+    
+  });
+  // add new item using ENTER key
+  txtInput.addEventListener("keydown", function (e) {
+    if (e.keyCode === 13) {
+      add.click();
     }
   });
+  // filtering items (all, active, complete)
+  document.querySelector(".filter").addEventListener("click", function (e) {
+    const id = e.target.id;
+    if (id) {
+      document.querySelector(".on").classList.remove("on");
+      document.getElementById(id).classList.add("on");
+      document.querySelector(".todos").className = `todos ${id}`;
+    }
+  });
+  
+}
+
+//get todos from locatStorage, use splice to delete one todo, setting newloclSotrage
+function removeTodo(index) {
+  const todos = JSON.parse(localStorage.getItem("todos"));
+  todos.splice(index, 1);
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+//gett todos from local storage, update isCompleted, set todos back to local storage
+function stateTodo(index, completed) {
+  const todos = JSON.parse(localStorage.getItem("todos"));
+  todos[index].isCompleted = completed;
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+
+//allows users to create new list items
+function addTodo(todos = JSON.parse(localStorage.getItem("todos"))) {
+  if (!todos) {
+    return null;
+  }
+  //how many active items left
+  const itemsLeft = document.getElementById("items-left");
+ 
+  //for each todo:
+  todos.forEach(function (todo) {
+    //create html elements
+    const card = document.createElement("li");
+    const cbContainer = document.createElement("div");
+    const cbInput = document.createElement("input");
+    const check = document.createElement("span");
+    const item = document.createElement("p");
+    const button = document.createElement("button");
+    const img = document.createElement("img");
+   
+
+    // classes
+    card.classList.add("card");
+    button.classList.add("delete");
+    cbContainer.classList.add("cb-container");
+    cbInput.classList.add("cb-input");
+    item.classList.add("item");
+    check.classList.add("check");
+    button.classList.add("delete");
+
+    //  attributes
+    img.setAttribute("src", "images/cross.svg");
+    img.setAttribute("alt", "Delete");
+    cbInput.setAttribute("type", "checkbox");
+
+    // new todo item
+    item.textContent = todo.item;
+    // if completed:
+    if (todo.isCompleted) {
+      card.classList.add("checked");
+      cbInput.setAttribute("checked", "checked");
+    }
+   
+    //checkbox click listener
+    cbInput.addEventListener("click", function () {
+      const correspondingCard = this.parentElement.parentElement;
+      const checked = this.checked;
+      //todos in localstorage
+      stateTodo(
+        [...document.querySelectorAll(".todos .card")].indexOf(
+          correspondingCard
+        ),
+        checked
+      );
+      //updated class
+      checked ? correspondingCard.classList.add("checked") : correspondingCard.classList.remove("checked");
+        //update itemsLeft
+      itemsLeft.textContent = document.querySelectorAll(
+        ".todos .card:not(.checked)"
+      ).length;
+    });
+    // Add click listener to delete button
+    button.addEventListener("click", function () {
+      const correspondingCard = this.parentElement;
+      //animation class
+      correspondingCard.classList.add("swipe");
+      //remove todo from localoStorage
+      removeTodo(
+        [...document.querySelectorAll(".todos .card")].indexOf(
+          correspondingCard
+        )
+      );
+      //update itemsLeft
+      correspondingCard.addEventListener("animationend", function () {
+        setTimeout(function () {
+          correspondingCard.remove();
+          itemsLeft.textContent = document.querySelectorAll(
+            ".todos .card:not(.checked)"
+          ).length;
+        }, 100);
+      });
+    });
+    
+//append children
+    button.appendChild(img);
+    cbContainer.appendChild(cbInput);
+    cbContainer.appendChild(check);
+    card.appendChild(cbContainer);
+    card.appendChild(item);
+    card.appendChild(button);
+    document.querySelector(".todos").appendChild(card);
+  });
+  //update itemsLeft on start
+  itemsLeft.textContent = document.querySelectorAll(
+    ".todos .card:not(.checked)"
+  ).length;
+}
 

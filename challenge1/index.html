@@ -4,25 +4,51 @@
     <meta charset="utf-8" />
     <title>To Do App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script charset="utf-8" src="app.js"></script>
-    <link rel="stylesheet" href="style.css" />
+    <meta name="author" cotent="Ashley Whiting" />
+    <title>WDD331 ToDo Application</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allan&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="style.css" />
 </head>
+
+<body>
+  <header>
+    <h1>ToDo</h1>
+   
+  </header>
 <main>
-    <div class="container">
-      <h1 class="app-title">todos</h1>
-      <ul class="todo-list js-todo-list"></ul>
-      <!-- add the empty state here -->
-      <div class="empty-state">
-        <svg class="checklist-icon"><use href="#checklist-icon"></use></svg>
-        <h2 class="empty-state__title">Add your first todo</h2>
-        <p class="empty-state__description">What do you want to get done today?</p>
-      </div>
-      <!-- end -->
-      <form class="todo-form js-form">
-        <input autofocus type="text" aria-label="Enter a new todo item" placeholder="E.g. Build a web app" class="js-todo-input">
-      </form>
+
+   <br>
+    <ul class="todos"></ul>
+    <br>
+    <div class="card stat">
+     
+
+    <div class="filter">
+      <p id="left"><span id="items-left">0</span> items left</p>
+      <button id="all" class="on">All</button>
+      <button id="active">Active</button>
+      <button id="completed">Completed</button>
+      
     </div>
+   
+
+  </div>
+  <div class="card add">
+    <div class="cb-container">
+      <button id="add-btn"> + </button>
+    </div>
+    <div class="txt-container">
+      <label for="addt">Create new Todo item</label>
+      <input type="text" class="txt-input" placeholder="New list item" />
+    </div>
+  </div>
+  
   </main>
 
+
   <script src='script.js'></script>
+  </body>
+
 </html>

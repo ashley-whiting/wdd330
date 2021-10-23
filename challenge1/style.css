@@ -1,23 +1,224 @@
+* {
+  margin: 0;
+  padding: 0;
+ /* get rid of overflow error */
+   box-sizing: border-box; 
+}
 
-.empty-state {
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    display: none;
-  }
-  
-  .checklist-icon {
-    margin-bottom: 20px;
-  }
-  
-  .empty-state__title, .empty-state__description {
-    margin-bottom: 20px;
-  }
 
-  .todo-list:empty {
-    display: none;
+
+body {
+  color: black;
+  background-color: white;
+  font-family: 'Allan', cursive;
+  font-size: 1.5rem;
+  background-color: lightblue;
+  background-image: linear-gradient(white, lightblue);  
+  padding: 5rem;
+  width: min(100%, 50rem);
+  margin: auto;
+}
+
+
+header{
+  background-image: linear-gradient(lightblue, rgb(138, 201, 240));
+  color: black;
+  font-weight: 300;
+  font-size: 2rem;
+  align-items: center;
+  text-align: center;
+  border: solid 2px lightblue;
+  border-radius: 3px;
+ 
+}
+
+header h1{
+  letter-spacing: 7px;
+}
+
+input, button{
+  color: black;
+  background: transparent;
+}
+
+button {
+  display: flex;
+  border: 5px black;
+  font-weight: 500;
+  font-size: 1.5rem;
+ 
+}
+
+#left{
+  color: black;
+}
+
+.card {
+  border: solid 1px black;
+  border-radius: 5px;
+  color: black;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+
+}
+
+
+
+
+.add .cb-container:hover{
+  background: lightblue;
+}
+
+.add .cb-container:hover #add-btn{
+  color: yellow;
+}
+.add .txt-container {
+  flex: 1;
+}
+.add .txt-container .txt-input {
+  width: 100%;
+  padding: 0.7rem;
+  color: black;
+}
+.add .txt-container .txt-input::placeholder {
+  color: blue;
+  font-weight: 200;
+}
+
+
+.card .cb-container{
+  width: 2rem;
+  height: 2rem;
+  border: 0.2rem solid pink;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.card .cb-container .cb-input{
+  opacity: 0;
+}
+
+ .card .cb-container .check {
+  position: absolute;
+   top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;  
+  pointer-events: none;
+  border-radius: inherit;
+} 
+.card .cb-container .cb-input:checked + .check {
+  background-color: pink;
+
+}
+
+
+.item{
+  flex: 1;
+  color:black;
+}
+.item:hover{
+  color:lightblue;
+}
+
+.todos .card.checked .item{
+  color: black;
+  text-decoration: line-through;
+  text-decoration-color: turquoise;
+}
+.delete{
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity .5s ease;
+}
+.todos .card:hover .delete{
+  background-color:turquoise;
+}
+
+
+.stat {
+  border-radius: 3px;
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.5rem 1rem;
+  padding-top: 0.25rem;
+ 
+}
+
+
+
+.stat .filter{
+  color: orange;
+  grid-column: 1/3;
+  justify-content: space-around; 
+  font-weight: 400;
+}.stat .filter *:hover{
+  color: blue;
+}
+.stat .filter .on{
+  color:orange;
+  border: dotted orange 1px;
+}
+
+ .todos.active .card.checked,
+.todos.completed .card{
+  transition: 0.5s;
+  opacity: 0;
+  padding: 0;
+  border: 0;
+  height: 0;
+ 
+} 
+
+.todos.completed .card.checked {
+  opacity: 1;
+  padding: 1.9rem 2rem;
+  height: auto;
+  display: flex;
+  pointer-events: all;
+  transition: 0.5s;
+  border: solid 1px black;
+}
+
+
+@keyframes swipe {
+  0% {
+    opacity: 1;
+    transform: rotateX(90deg);
   }
-  
-  .todo-list:empty + .empty-state {
+  50% {
+    transform: rotateX(0deg);
+    opacity: 0.5;
+  }
+  100% {
+   display: none;
+   opacity: 0;
+   transform: rotateX(90deg);
+} 
+}
+/* swipe ANIMATION */
+ .todos .card.swipe {
+  animation: swipe 0.2s linear;
+}
+
+
+
+
+@media (min-width: 500px){
+  .stat{
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: none;
+  }
+  .stat .filter{
     display: flex;
+    justify-content: space-between;
   }
+}
+

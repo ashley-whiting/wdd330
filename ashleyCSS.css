@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* //get rid of overflow error */
+    box-sizing: border-box; 
+  }
+
+  body {
+    color: white;
+    font: 400, 1.5rem, "Allan", sans-serif;
+    background-color: black;
+    padding: 5rem;
+    width: min(85%, 50rem);
+    margin: auto;
+  }
+  
+  ul {
+    list-style: none;
+  }
+  
+  input, button{
+    border: 1px blueviolet;
+    background: green;
+  }
+  
+  input:focus, button:focus {
+    outline: 0;
+  }
+  
+  button{
+    display: flex;
+  }
+  
+  .card{
+    background-color: hotpink;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem;
+    gap: 2rem;
+  }
+  
+  header.card{
+    background: red;
+    padding: 0;
+    text-align: center;
+    align-items: center;
+  }
+  header.card h1{
+    color: yellow;
+   
+    font-weight: 500;
+    font-size: 3rem;
+  }
+  
+  .add{
+    margin: 4rem 0 2.5rem 0;
+    border-radius: 1rem;
+  }
+  .add .container #add-btn{
+    color: green;
+    font-size: 1.5rem;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .add .cb-container:hover{
+    background: lightblue;
+  }
+  .add .cb-container:hover #add-btn{
+    color: white;
+  }
+  .add .txt-container {
+    flex: 1;
+  }
+  .add .txt-container .txt-input {
+    width: 100%;
+    padding: 0.7rem 0;
+    color: green;
+  }
+  .add .txt-container .txt-input::placeholder {
+    color: blue;
+    font-weight: 200;
+  }
+  .add .cb-container:active {
+    transform: scale(0.95);
+  }
+  
+  .card .cb-container{
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1rem solid blue;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .card .cb-container .cb-input{
+    transform: scale(1.8);
+    opacity: 0;
+  }
+  
+  .card .cb-container .check {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    border-radius: inherit;
+  }
+  .card .cb-container .cb-input:checked + .check {
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .todos .card:first-child{
+    border-radius: 1px;
+  }
+  
+  .todos > * + * {
+    border-top: .2rem solid grey;
+  }
+  
+  .item{
+    flex: 1;
+    color:indianred;
+  }
+  .item:hover{
+    color:lemonchiffon;
+  }
+  .clear{
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity .5s ease;
+  }
+  .todos .card:hover .clear{
+    opacity: 1;
+  }
+  
+  .stat {
+    border-radius: 1px;
+    border-top: 1px solid white;
+    font-size: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5rem 2rem;
+    
+  }
+  .stat .filter{
+    color: orange;
+    grid-row: 2/3;
+    grid-column: 1/3;
+    justify-content: space-around; 
+    font-weight: 400;
+  }.stat .filter *:hover{
+    color: whitesmoke
+  }
+  .stat .corner:last-child {
+    justify-self: end;
+  }
+  .stat .corner button:hover {
+    color: orange;
+  }
+  
+  @media (min-width: 500px){
+    .stat{
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: none;
+    }
+    .stat .filter{
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  
+  
