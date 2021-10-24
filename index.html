@@ -6,17 +6,49 @@
 
 
   <style>
+    *{
+      margin: 0 auto;
+      padding: 0;
+      box-sizing: border-box;
+      max-width: 800px;
+    }
+body{
+  background-color: white;
+  
 
-main{
-  border: solid 1px darkblue;
-  border-radius: 4px;
-  margin:0 auto;
 }
-   #header{
-       background-color: lightblue;
-       padding: 10px;
-       margin: auto;
-       text-align: center;
+main{
+  color: rgba(30, 30, 30, 0.8);
+  
+ max-width: 600px;
+ margin: 0 auto;
+ 
+}
+   header{
+  height: auto;
+  margin-top:0;
+  background-color: rgb(33, 33, 63);
+  border-radius: 0 0 4px 4px;
+  color: white;
+  padding-top: 20px;
+   }
+   header h1{
+     text-align: center;
+     padding-bottom: 20px;
+     padding-top: 20px;
+     margin: 0;
+   }
+  ol{
+    border: solid 1px darkblue;
+    border-radius: 4px;
+  }
+   footer{
+     background-color: rgb(33, 33, 63);
+     border-radius: .5rem;
+     color: white;
+     padding: 8px;
+     height: 70px;
+     text-align: center;
    }
 
   
@@ -24,17 +56,29 @@ main{
 </head>
 
 <body onload="createList()">
-  <h1 id="header">WDD 330 Portfolio| Fall 2021<br>
+  <header>
+  <h1>WDD 330 Portfolio| Fall 2021<br>
 	Ashley Whiting</h1>
+  </header>
+  <br>
 
   <main>
+    <ul>
+      <li>Item1</li>
+      <li>Item2</li>
+      <li>Item3</li>
+    </ul>
    <ol id="myList">
       
            
    </ol>
+  
    </main>
+   <br>
+   <footer>Ashley Whiting | WDD331 | BYUIdaho</footer>
  
 <script src="..\wdd330\js\main.js"></script> 
+
 
 </body>
 </html>
