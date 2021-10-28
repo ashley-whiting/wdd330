@@ -24,9 +24,41 @@
           background-color: #FF7F7F;
       }
   </style>
+  
+  <script>
+
+function exampleLink(){
+
+const links = [
+    {label: "Ajax in Action", url: "ajax.html"}
+   
+    
+
+]
+
+
+let list = document.getElementById("exampleList");
+
+for(let i=0; i< links.length; i++){
+    let item = document.createElement('li');
+    let a = document.createElement('a');
+
+    var anchor = document.createTextNode(links[i].label);
+    a.appendChild(anchor);
+    a.href = links[i].url;
+    item.appendChild(a);
+
+    list.appendChild(item);
+}
+
+}
+
+  </script>
+  
 
 </head>
 
+<body onload="exampleLink()"></body>
 <body>
   <h1>WDD 330 Portfolio | Week7</h1>
 
@@ -130,6 +162,70 @@
 <ul>
     <li>At least one argument; otherwise the return value must depend on something other than the arguments of the function, breaking the first rule</li>
     <li>A return value; otherwise there’s no point in the function (unless it has changed something else in the program – in which case, it’s broken the 'no side-effects' rule).</li>
+</ul>
+
+
+<h2>Chapter 13 Ajax</h2>
+<p><b>Asynchronous-JavaScript-XML: Ajax</b></p>
+<ul>
+    <li>Asynchronous: When a request for data is sent, the program doesn’t have to stop and wait for the response. </li>
+    <li>JavaScript: Ajax enabled JS to send requests and receive responses from a server, allowing content to be updated in real time.</li>
+    <li>XML: XML docs were used in the past to return data. Nowadays Ajax uses JSON, which is more lightweight and easier parse. </li>
+</ul>
+
+<h3>The Fetch API</h3>
+<p>The Fetch API provides a global fetch() method that only has one mandatory argument, the URL of the resource you with to fetch. </p>
+<p id="code">fetch('https://example.com/data')<br>
+    .then( // code that handles the response )<br>
+    .catch( // code that runs if the server returns an error )</p>
+
+<p><b>The Response Interface</b></p>  
+<ul>
+    <li>Redirects: used to redirect to another URL</li>
+    <li>Text Responses: takes a stream of text from the response, reads it and then returns a promise that resolves to a USVSting object that can be treated as a string.</li>
+    <li>File Responses: blob() method reads a file of raw data such as an image or spreadsheet.</li>
+    <li>JSON responses: json() mehod transforms a stream of JSON data into a promise that resolves to a JS object. </li>
+</ul>  
+
+<p><b>The Request Interface</b></p>
+<p>Request objects are created using the Request() constructor, and include the following properties:</p>
+<ul>
+    <li>url – The URL of the requested resource (the only property that is required).</li>
+    <li>method – a string that specifies which HTTP method should be used for the request. By default, this is 'GET'.</li>
+    <li>headers – This is a Headers object that provides details of the request's headers.</li>
+    <li>mode – Allows you to specify if CORS is used or not. CORS is enabled by default.</li>
+    <li>cache – Allows you to specify how the request will use the browser's cache. <br>
+        For example, you can force it to request a resource and update the cache with the result, or you can force it to only look in the cache for the resource.</li>
+    <li>credentials – Lets you specify if cookies should be allowed with the request.</li>
+    <li>redirect – Specifies what to do if the response returns a redirect. There’s a choice of three values:<br>
+         'follow' (the redirect is followed), 'error' (an error is thrown) or 'manual' (the user has to click on a link to follow the redirect).</li>
+</ul>
+
+<p><b>Headers Interface</b></p>
+<p>HTTP headers are used to pass on any additional information about a request or response.</p>
+<p id="remember">Typical information contained in headers includes the:</p>
+<ul>
+    <li>File-type of the resource</li>
+    <li>Cookie information</li>
+    <li>Authentication information</li>
+    <li>When the resource was last modified</li>
+</ul>
+
+<p><b>Putting it all Together:</b></p>
+<p id="code">
+const url = 'https:example.com/data';<br>
+const headers = new Headers({ 'Content-Type': 'text/plain', 'Accept-Charset' : 'utf-8', 'Accept-Encoding':'gzip,deflate' })<br>
+const request = (url,{    headers: headers})<br>
+fetch(request).then( function(response) {<br>
+    if(response.ok) {return response;} <br>
+    throw Error(response.statusText);})<br>
+.then( response => // do something with response ).catch( error => console.log('There was an error!') )
+
+</p>
+
+<h3>Receiving Information</h3>
+<ul id="exampleList">
+
 </ul>
 
 
