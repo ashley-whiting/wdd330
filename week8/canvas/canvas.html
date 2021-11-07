@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Transitions & Transform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        .myCanvas {
+    border: dotted 2px black;
+  
+}
+        </style>
+        <script>
+         function addEvent(event, elem, fxn) {
+   if (elem.addEventListener) {
+      elem.addEventListener(event, fxn, false);
+   } else if (elem.attachEvent) {
+      elem.attachEvent('on' + event, fxn);
+   } else {
+      elem['on' + event] = fxn;
+   }
+}
+
+function drawRectangle() {
+	var canvas = document.getElementById("demo1");
+	var context = canvas.getContext("2d");
+	context.strokeStyle = "red";
+	context.fillStyle = "rgba(0, 0, 255, 0.50)";
+	context.fillRect(10,10,100,100);
+	context.strokeRect(10,10,100,100);	
+}
+
+function drawPattern() {
+    var canvas = document.getElementById("demo2");
+    var context = canvas.getContext("2d");
+    context.strokeStyle = "red";
+
+    var img = new Image();
+    img.src = "images/bg-bike.png";
+    img.onload = function() {
+      var pattern = context.createPattern(img, "repeat");
+      context.fillStyle = pattern;
+      context.fillRect(10,10,100,100);
+      context.strokeRect(10,10,100,100);  
+    };
+}
+
+function drawGradient() {
+  var canvas = document.getElementById("demo3");
+  var context = canvas.getContext("2d");
+  context.strokeStyle = "red";
+
+  var gradient = context.createLinearGradient(0, 0, 0, 200);
+  gradient.addColorStop(0,"blue"); 
+  gradient.addColorStop(1,"white");
+  context.fillStyle = gradient;
+  context.fillRect(10,10,100,100);
+  context.strokeRect(10,10,100,100);
+}
+
+function drawCircle(canvas) {
+    var context = canvas.getContext("2d");
+
+    context.beginPath();
+    context.arc(50, 50, 30, 0, Math.PI*2, true);
+    context.closePath();
+    context.strokeStyle = "red";
+    context.fillStyle = "blue";
+    context.lineWidth = 3;
+    context.fill();
+    context.stroke();	
+}
+
+drawRectangle();
+drawPattern();
+drawGradient();
+
+var canvas4 = document.getElementById("demo4");
+
+drawCircle(canvas4);
+
+        </script>
+ </head>
+ 
+ <body>
+    <div class="main">
+        <h2>Demo 1: Drawing a rectangle</h2>
+        <canvas width="200" height="200" id="demo1" class="myCanvas">
+        Sorry! Your browser doesn't support Canvas.
+        </canvas>
+        <h2>Demo 2: Filling the canvas with a pattern</h2>
+        <canvas width="200" height="200" id="demo2" class="myCanvas">
+        Sorry! Your browser doesn't support Canvas.
+        </canvas>
+        
+        <h2>Demo 3: Creating a gradient on the canvas</h2>
+        <canvas width="200" height="200" id="demo3" class="myCanvas">
+        Sorry! Your browser doesn't support Canvas.
+        </canvas>
+        
+        <h2>Demo 4: Drawing a circle</h2>
+        <canvas width="200" height="200" id="demo4" class="myCanvas">
+        Sorry! Your browser doesn't support Canvas.
+        </canvas>
+ </body>
+ </html>
