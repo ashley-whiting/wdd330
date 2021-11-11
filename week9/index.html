@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+<head>
+  <title>WDD 330 Portfolio</title>
+ 
+  <style>
+      body{
+          background-color:#e6f3f8;
+          font-family: Arial, Helvetica, sans-serif;
+      }
+      h3{
+          text-decoration: underline;
+      }
+      #highlight{
+          background-color: rgb(241, 241, 166)
+      }
+      #remember{
+          background-color: lightskyblue;
+      }
+      #code{
+          font-family: 'Courier New', Courier, monospace;
+      }
+      #color{
+          background-color: #FF7F7F;
+      }
+  </style>
+  </head>
+  <body>
+    <h1>WDD 330 Portfolio | Week9</h1>
+  
+  <h2>Chapter 9: The Window Object</h2>
+
+  <h3>The Browser Object Model </h3>
+  <p>The Browser Object Model is a collection of properties and methods that contain information about the browser and computer screen. </p>
+  <p id="remember">Remember:</p>
+  <p>THE BOM Only Makes Sense in a Browser Environment. Which means that other environments such as Node.js won’t have a window object, <br>
+    although they will still have a global object; for example, Node has an object called global. </p>
+
+    <p><b>Global</b></p>
+    <p>Global variables are properties of a global object. In a browser environment, the global object is the window object. <br>
+        This means that any global variable created is a property of the window object. </p>
+    <p><b>Dialogs</b></p>
+    <ul>
+     <li>-alert() will pause the execution of the program and display a message in a dialog box</li>   
+     <li>-confirm() will stop the execution of the program and display a confirmation dialog that displays the provided message and giving the options of OK or Cancel. </li>
+     <li>-prompt() will stop the execution of the program and will display a dialog that shows the provided message as an argument, as well as an input field for the user to enter text. The text is then return as a string when the user clicks OK. </li>
+    </ul>
+
+    <h3>Browser Information</h3>
+    <p>*The window object has a number or properties and methods that provide information about the user’s browser.</p>
+    <p>The Navigator object contains information about the browser being used. The userAgent property will return information about the browser and operating system. Example:</p>
+    <p id="code">window.navigator.userAgent<br>
+        << "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8"
+        </p>
+    <p>--> this information isn’t very reliable as it can be changed by a suer, and the userAgent property had been deprecated</p>    
+
+    <p><b>Window.Location</b></p>
+    <p>The window.location property is an object that contains information about the URL of the current page. </p>
+<ul>
+    <li>-href property returns the full URL as a string</li>
+    <li>-protocol property returns a string describing the protocol used(http, https, ftp, etc)</li>
+    <li>-host property returns a string describing the domain of the current URL and the port number. </li>
+    <li>-hostname property returns a string describing the domain of the current URL</li>
+    <li>-port property returns a string describing the port number</li>
+    <li>-pathname property returns a string of the path that follows the domain</li>
+    <li>-search property returns a string that starts with a “?” followed by the query string parameters. </li>
+    <li>-hash property returns a string that starts with a “#” followed by the fragment identifier.</li>
+    <li>-origin property returns a string that shows the protocol and domain where the current page originated from.</li>
+    <br>
+    <li>-reload() can be used to force a reload of the current page. </li>
+    <li>-assign() can be used to load another resource from a URL provided as a parameter</li>
+    <li>-replace() is almost the same as the assign(), but the current page will not be stored in the session history, so the user will be unable to navigate back to it using the back button</li>
+<li>-toString() will return a string containing the whole URL</li>
+</ul>
+
+<h3>Browser History</h3>
+<p>*the window.history property can be used to access information about any previously visited pages in the current browser session</p>
+<ul>
+    <li>-window.history.length property shows how many pages have been visited before arriving at the current page
+
+    </li>
+    <li>-window.history.go() can be used to go to a specific page, where 0 is the current page.</li>
+</ul>
+
+<h3>Controlling Windows</h3>
+<ul>
+    <li>-window.open() can o pen a new window.</li>
+    <li>-window.close() can be used to close a window, assuming there is a reference to it.</li>
+    <li>Window.moveTo will move the window to the two parameters given. X and Y coordinates of the screen that the window is to be moved to.</li>
+    <li>Window.resizeTo() takes two parameters that specify the width and height of the resiezed window’s dimensions</li>
+</ul>
+
+<h3>Screen Information</h3>
+<ul>
+    <li>-window.screen can give you the .height or .width</li>
+    <li>-availHeight and availWidth can be used to find the height and width of the screen, excluding any operatin gsytem menus</li>
+    <li>-colorDepth can be used to find the color bit depth of the use’s monitor. </li>
+</ul>
+
+<h3>The Document Object</h3>
+<p>Document.write() method writes a string of text to the page. *Only rare legitimate uses of this.</p>
+
+<p><b>Cookies</b></p>
+<ul>
+    <li>-Create a cookie: document.cookie = ‘name=MyCookie’</li>
+    <li>-Cookie Values: document.cookie = ‘country=USA’;</li>
+    <li>-Cookie Expiry Dates: document.cookie = `name=MyCookie; expires=${ expiryDate.toUTCString()}`;</li>
+    <li>-Cookie Path: document.cookie = ‘name=MyCookie; path/’</li>
+    <li>-Cookie Doman: document.cookie = ‘name=MyCookie; domain=sitepoint.com’;</li>
+    <li>-Secure Cookies: document.cookie = ‘name=MyCookie; secure’;</li>
+    <li>-Deleting Cookies: document.cookie = ‘name=MyCookie; expires=Fri, 02 Feb 1985 00:00:01 GMT’;</li>
+</ul>
+
+<h3>Timing Functions</h3>
+<ul>
+    <li>setTImeout() method accepts a callback function as its first parameter and a number of milliseconds as its second parameter. </li>
+    <li>setInterval() method works in a similar way to setTimeout, except that it will repeatedly invoke the callback function after every given number of milliseconds</li>
+</ul>
+
+    </body>
+    </html>
