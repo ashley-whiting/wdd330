@@ -2,6 +2,14 @@
 <html>
     <head>
         <title>Web Worker Example</title>
+     
+    </head>
+    <body>
+        <h3>Count Numbers in the Background!</h3>
+        <p>Count numbers: <output id="result"></output></p>
+        <button onclick="startWorker()">Start Worker</button>
+        <button onclick="stopWorker()">Stop Worker</button>
+
         <script>
             let w;
 
@@ -24,13 +32,5 @@
                 w = undefined;
             }
         </script>
-    </head>
-    <body>
-        <h3>Count Numbers in the Background!</h3>
-        <p>Count numbers: <output id="result"></output></p>
-        <button onclick="startWorker()">Start Worker</button>
-        <button onclick="stopWorker()">Stop Worker</button>
-
-       
     </body>
 </html>
