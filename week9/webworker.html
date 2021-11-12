@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Web Worker Example</title>
+        <script>
+            let w;
+
+            function startWorker(){
+                if(typeof(Worker) !== "undefined"){
+                    if(typeof(w) == "undefined") {
+                        w = new Worker("demo_workers.js");
+                    }
+                    w.onmessage = function(event) {
+                        document.getElementById("result").innerHTML = event.data;
+                    };
+                }else{
+                    document.getElementById("result").innerHTML = 
+                    "Your Browser doesn't support web workers";
+                }
+            }
+
+            function stopWorker() {
+                w.terminate();
+                w = undefined;
+            }
+        </script>
+    </head>
+    <body>
+        <h3>Count Numbers in the Background!</h3>
+        <p>Count numbers: <output id="result"></output></p>
+        <button onclick="startWorker()">Start Worker</button>
+        <button onclick="stopWorker()">Stop Worker</button>
+
+       
+    </body>
+</html>
