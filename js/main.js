@@ -19,7 +19,9 @@ const links = [
     {label: "Week 6 ToDo App", url:"challenge1"},
     {label: "Week7 notes", url: "week7"},
     {label: "Week8 ", url: "week8"},
-    {label: "Week9 ", url: "week9"}
+    {label: "Week9 ", url: "week9"},
+    {label: "Week10 ", url: "week10"}
+
 
 
     
