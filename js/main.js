@@ -1,13 +1,4 @@
 
-// let data = ["Week01", "Week02", "Week03"];
-
-// let list = document.getElementById("myList");
-
-// data.forEach((item) => {
-//   let li = document.createElement("li");
-//   li.innerText = item;
-//   list.appendChild(li);
-// });
 function createList(){
 
 const links = [
@@ -21,7 +12,7 @@ const links = [
     {label: "Week8 ", url: "week8"},
     {label: "Week9 ", url: "week9"},
     {label: "Week10 ", url: "week10"},
-    {label: "Week11 Team ", url: "week11/client"}
+  
 
 
 
