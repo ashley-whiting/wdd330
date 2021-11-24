@@ -20,7 +20,8 @@ const links = [
     {label: "Week7 notes", url: "week7"},
     {label: "Week8 ", url: "week8"},
     {label: "Week9 ", url: "week9"},
-    {label: "Week10 ", url: "week10"}
+    {label: "Week10 ", url: "week10"},
+    {label: "Week11 Team ", url: "week11"}
 
 
 
